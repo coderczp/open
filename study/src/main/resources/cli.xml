@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:czp="http://www.czp.com/schema/czp"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.czp.com/schema/czp 
+		http://www.czp.com/schema/czp/czp.xsd">
+
+	<bean id="rpcSer" class="com.czp.study.dubbo.impl.MyDemoServer" />
+	<bean id="ctx" class="com.czp.study.rpc.ser.RpcNettyServer">
+		<constructor-arg index="0" value="8989" />
+	</bean>
+
+	<czp:rpc id="czpTest" exportName="czpSer" ref="rpcSer" ctxId="ctx" />
+
+</beans>
