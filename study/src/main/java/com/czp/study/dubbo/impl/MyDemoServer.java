@@ -12,6 +12,11 @@ import com.czp.study.dubbo.itf.IDemo;
 public class MyDemoServer implements IDemo {
 
 	public String hello(String line) {
+		double random = Math.random();
+		if(random>0.5){
+			System.out.println(random);
+			throw new RuntimeException("e");
+		}
 		return line;
 	}
 

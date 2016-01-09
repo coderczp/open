@@ -19,13 +19,17 @@ public class DubboClient {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				new String[] { "cli.xml" });
+				new String[] { "cl.xml" });
 		context.start();
 		IDemo t = (IDemo) context.getBean("czpService");
 		Scanner sc = new Scanner(System.in);
 		String line=null;
 		while(!(line=sc.nextLine()).equals("exit")){
-			System.out.println(t.hello(line));
+			try {
+				System.out.println(t.hello(line));
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 		sc.close();
 		context.close();
